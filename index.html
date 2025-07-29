@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -71,14 +71,27 @@
 </section>
 
 <section id="design">
-  <h2>Design</h2>
-  <p>The project ...</p>
+  <h2>Design Objectives</h2>
+    <li>Design and build a system to detect forest fires by measuring ionospheric disturbances using Software Defined Radio (SDR). </li>
+    <li>Use SDR to record the phase and timing of reflected radio waves from the ionosphere.</li>
+    <li>Triangulate data from multiple receive stations to estimate the position and intensity of the disturbances.</li>
+      <li>Setup at a single receiver location.</li> 
+      <li>Successful detection of a 5 MHz wave.</li>
+      <li>Preliminary analysis of ionospheric wave patterns.</li>
+</p>
+  <h2>Design and Analysis</h2>
+  <p>Early detection of wildfires is critical to minimizing environmental damage and allowing firefighters to respond, especially in rural areas. Traditional wildfire detection methods such as satellite imaging, camera surveillance, and ground sensors have limitations in coverage, detection response, and weather conditions. This project uses an alternative approach with radio waves as a carrier wave to reflect off of the ionosphere to detect changes caused by wildfires. To assess the feasibility of this method, a prototype system was developed using one USRP with a LFRX and LFTX daughterboard and one USRP with a LFRX daughterboard so that a 5 MHz carrier wave could be transmitted and received with a 7-bit Barker's code. Analyzed frequency range of forest fires using Brunt-Väisälä frequency equations.
+</p>
 </section>
 
 <section id="results">
   <h2>Results/Findings</h2>
   <ul>
-    <li>...</li>
+    <p>2 Bit Barker's Code</p>
+    <img src="2bit_barker.png" alt="Graph 1" style="width:100%; max-width:600px;"> 
+
+    <p>7 Bit Barker's Code</p>
+    <img src="7bit_barker.png" alt="Graph 1" style="width:100%; max-width:600px;"> 
   </ul>
 </section>
 
