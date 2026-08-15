@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Computer Engineering Portfolio</title>
+    <title>Ayman Al Rubaey | Computer Engineering Portfolio</title>
     <style>
-        /* Modern, clean developer theme styling */
         :root {
             --bg-color: #0f172a;
             --card-bg: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --accent-hardware: #38bdf8; /* Cyan for hardware */
-            --accent-software: #34d399; /* Green for software */
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --accent-purple: #c084fc;
             --border-color: #334155;
         }
 
@@ -31,13 +31,12 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
         }
 
-        /* Header Styles */
         header {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 2rem;
         }
@@ -51,11 +50,11 @@
         .subtitle {
             color: var(--text-muted);
             font-size: 1.2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .links a {
-            color: var(--accent-hardware);
+            color: var(--accent-blue);
             text-decoration: none;
             margin-right: 1.5rem;
             font-weight: 500;
@@ -65,22 +64,51 @@
             text-decoration: underline;
         }
 
-        /* Section Layouts */
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 1.5rem;
-            border-left: 4px solid var(--accent-hardware);
+            border-left: 4px solid var(--accent-blue);
             padding-left: 0.75rem;
         }
 
-        /* Skills Grid */
+        /* Filter Controls */
+        .filter-container {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-blue);
+            color: var(--bg-color);
+            border-color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Skills Layout */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
@@ -92,9 +120,9 @@
         }
 
         .skills-category h3 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin-bottom: 0.75rem;
-            color: var(--accent-software);
+            color: var(--accent-green);
         }
 
         .skills-category p {
@@ -116,6 +144,12 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .project-header {
@@ -128,7 +162,7 @@
         }
 
         .project-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
         }
 
@@ -136,14 +170,14 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            padding: 0.25rem 0.5rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 4px;
             font-weight: bold;
         }
 
-        .tag.hardware { background: rgba(56, 189, 248, 0.15); color: var(--accent-hardware); }
-        .tag.software { background: rgba(52, 211, 153, 0.15); color: var(--accent-software); }
-        .tag.hybrid { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .tag.hardware { background: rgba(56, 189, 248, 0.15); color: var(--accent-blue); }
+        .tag.software { background: rgba(52, 211, 153, 0.15); color: var(--accent-green); }
+        .tag.hybrid { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); }
 
         .project-body {
             padding: 0 1.5rem 1.5rem 1.5rem;
@@ -151,21 +185,48 @@
 
         .project-description {
             color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.98rem;
+            text-align: justify;
+        }
+
+        .inner-highlights {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+            border-left: 3px solid var(--border-color);
+        }
+
+        .inner-highlights ul {
+            list-style-type: none;
+        }
+
+        .inner-highlights li {
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-muted);
+        }
+
+        .inner-highlights li strong {
+            color: var(--text-main);
+            font-family: monospace;
         }
 
         .project-tech {
             font-size: 0.85rem;
             color: var(--text-main);
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             font-family: monospace;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
         }
 
         .project-links a {
-            color: var(--accent-hardware);
+            color: var(--accent-blue);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
         }
 
@@ -177,7 +238,7 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.85rem;
-            margin-top: 5rem;
+            margin-top: 6rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border-color);
         }
@@ -188,88 +249,56 @@
     <div class="container">
         <!-- HEADER SECTION -->
         <header>
-            <h1>Your Name</h1>
-            <div class="subtitle">Computer Engineering | Embedded Systems & Test Automation</div>
+            <h1>Ayman Al Rubaey</h1>
+            <div class="subtitle">Computer Engineering | Embedded Systems, Digital Logic & Test Automation</div>
             <div class="links">
-                <a href="mailto:your.email@example.com">Email</a>
-                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="mailto:ayman.alrubaey@example.com">Email</a>
+                <a href="https://github.com" target="_blank">Featured GitHub</a>
                 <a href="https://linkedin.com" target="_blank">LinkedIn</a>
                 <a href="resume.pdf" target="_blank">Download CV (PDF)</a>
             </div>
         </header>
 
-        <!-- SKILLS MATRIX SECTION -->
+        <!-- CORE TECHNICAL MATRIX -->
         <section id="skills">
-            <h2>Technical Core</h2>
+            <h2>Technical Focus</h2>
             <div class="skills-grid">
                 <div class="skills-category">
-                    <h3>Embedded & Firmware</h3>
-                    <p>C/C++, Python, FreeRTOS, STM32 microcontrollers, Raspberry Pi Pico, Bare-Metal Development.</p>
+                    <h3>Embedded & Concurrency</h3>
+                    <p>C/C++, MicroPython, FreeRTOS, Task Synchronization, Queues, Software Timers, Multi-threading Edge Triggers.</p>
                 </div>
                 <div class="skills-category">
-                    <h3>Hardware Design</h3>
-                    <p>KiCad (PCB Layout & Schematics), SolidWorks CAD, Hardware-in-the-Loop (HIL) Testing, Soldering.</p>
+                    <h3>Digital Design & Hardware</h3>
+                    <p>VHDL, ModelSim Waveform Analysis, RTL Synthesis, Xilinx Vivado, FPGA Deployment (Basys 3), KiCad PCB Layout, SolidWorks CAD.</p>
                 </div>
                 <div class="skills-category">
-                    <h3>Protocols & Tools</h3>
-                    <p>CAN-Bus, I2C, SPI, UART, CANoe/CANalyzer, TIA Portal (PLC), Git Version Control.</p>
+                    <h3>Protocols & Validation</h3>
+                    <p>CAN-bus Bus Topologies, SPI, I2C, UART Serial Routing, Hardware-in-the-Loop (HIL) Test Automation, Lab Oscilloscopes.</p>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECTS SECTION -->
+        <!-- FILTERABLE PROJECTS SECTION -->
         <section id="projects">
-            <h2>Featured Projects</h2>
+            <h2>Engineering Case Studies</h2>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterProjects('all')">All Work</button>
+                <button class="filter-btn" onclick="filterProjects('hardware')">Digital Logic / Hardware</button>
+                <button class="filter-btn" onclick="filterProjects('software')">Embedded Software</button>
+                <button class="filter-btn" onclick="filterProjects('automation')">Test Automation</button>
+            </div>
+
             <div class="project-list">
 
-                <!-- Project 1 -->
-                <div class="project-card">
+                <!-- Case Study 1: VHDL CPU -->
+                <div class="project-card" data-category="hardware">
                     <div class="project-header">
-                        <div class="project-title">Digital Alarm Clock with Radio</div>
-                        <span class="tag hybrid">Hardware + Firmware</span>
+                        <div class="project-title">16-Bit Pipelined RISC CPU Processor</div>
+                        <span class="tag hardware">Digital Logic & Architecture</span>
                     </div>
                     <div class="project-body">
                         <div class="project-description">
-                            An end-to-end consumer electronics prototype built on a Raspberry Pi Pico. Successfully multiplexed SPI and I2C buses to manage a real-time OLED UI alongside radio chip tuning without communication latency or display flickering. Designed a custom enclosure using SolidWorks to house the custom PCB cleanly.
+                            Designed and synthesized a functional 16-bit RISC-like pipelined processor core utilizing VHDL. Implemented a classical 5-stage computer architecture comprising Instruction Fetch, Decode, Execute, Memory Access, and Write-Back blocks. To maintain optimal hazard bounds, integrated dedicated hardware-level pipeline stall logic to seamlessly safeguard structural execution paths across variable mathematical, logic, and branching instruction sets. Verified signal configurations across unified register files using ModelSim simulations before successfully porting the compiled RTL code down to physical Xilinx Basys 3 FPGA silicon complete with functional bootloaders.
                         </div>
-                        <div class="project-tech">Tech Stack: C++, KiCad, SolidWorks, SPI/I2C, Raspberry Pi Pico</div>
-                        <div class="project-links"><a href="#" target="_blank">View GitHub Repository &rarr;</a></div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">Automated CAN-Bus Power Control Tool</div>
-                        <span class="tag software">Test Automation</span>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-description">
-                            Developed a sanitized hardware-in-the-loop (HIL) automated script environment using Python to communicate via USB-to-CAN analyzer devices. Programmed custom sequences to toggle target hardware power configurations dynamically, cutting physical diagnostic regression testing times significantly.
-                        </div>
-                        <div class="project-tech">Tech Stack: Python, CAN-Bus, System Architecture, Test Automation</div>
-                        <div class="project-links"><a href="#" target="_blank">View System Architecture Outline &rarr;</a></div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">FreeRTOS Traffic Light Controller</div>
-                        <span class="tag software">Embedded Software</span>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-description">
-                            A real-time concurrency demonstration running on a micro-controller framework. Created independent high/low priority execution tasks for sensor sampling, traffic phase cycles, and display outputs. Used FreeRTOS queues and software timers to explicitly eliminate data race conditions.
-                        </div>
-                        <div class="project-tech">Tech Stack: C, FreeRTOS, Task Synchronization, ADC Drivers</div>
-                        <div class="project-links"><a href="#" target="_blank">View Source Code &rarr;</a></div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">16-Bit Pipelined RISC CPU</div>
-                        <span class="tag hardware">Digital Logic</span>
-                    </div>
+                        <div class="inner-highlights">
